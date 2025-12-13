@@ -18,8 +18,8 @@ jobs:
       - name: Install deps
         run: bun install
 
-      - name: Run tests with coverage
-        run: bunx c8 --reporter=lcov bun test
+      - name: Run tests
+        run: bun test --coverage
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v2
