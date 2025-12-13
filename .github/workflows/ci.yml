@@ -18,8 +18,8 @@ jobs:
       - name: Install deps
         run: bun install
 
-      - name: Run tests
-        run: bun test --coverage
+      - name: Vitest (Node) with coverage
+        run: bunx vitest run --coverage
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v2

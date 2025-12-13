@@ -5,21 +5,22 @@ export const app = new Elysia();
 app.get("/", () => "Hello Elysia");
 
 app.get("/user/:id", ({ params, set }) => {
-    const userId = Number(params.id);
+  const userId = Number(params.id);
 
-    if (!Number.isInteger(userId) || userId <= 0) {
-        set.status = 404;
-        return { message: "User not found" };
-    }
+  if (!Number.isInteger(userId) || userId <= 0) {
+    set.status = 404;
+    return { message: "User not found" };
+  }
 
-    return {
-        id: userId,
-        name: "Aji",
-    };
+  return { id: userId, name: "Aji" };
 });
 
 app.get("/crash", () => {
-    throw new Error("Intentional crash");
+  throw new Error("Intentional crash");
 });
 
-app.listen(3000);
+// ⬇️ penting supaya Vitest tidak auto listen
+if (import.meta.main) {
+  app.listen(3000);
+  console.log("Server running on http://localhost:3000");
+}
