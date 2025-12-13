@@ -2,15 +2,14 @@ import { Elysia } from "elysia";
 
 export const app = new Elysia();
 
-app.get("/", () => {
-    return "Hello Elysia";
-});
+app.get("/", () => "Hello Elysia");
 
-app.get("/user/:id", ({ params }) => {
-    const userId = parseInt(params.id) as number;
+app.get("/user/:id", ({ params, set }) => {
+    const userId = Number(params.id);
 
-    if (userId === 0) {
-        return null;
+    if (!Number.isInteger(userId) || userId <= 0) {
+        set.status = 404;
+        return { message: "User not found" };
     }
 
     return {
@@ -19,6 +18,8 @@ app.get("/user/:id", ({ params }) => {
     };
 });
 
-app.listen(3000);
+app.get("/crash", () => {
+    throw new Error("Intentional crash");
+});
 
-console.log("Server running on http://localhost:3000");
+app.listen(3000);
