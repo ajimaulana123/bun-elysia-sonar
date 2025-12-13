@@ -6,6 +6,11 @@ app.get("/", () => {
     return "Hello Elysia";
 });
 
+app.get("/crash", () => {
+    const a: any = undefined;
+    return a.length; // 💥 null/undefined dereference
+});
+
 app.get("/user/:id", ({ params }) => {
     // ❌ sengaja bikin bug & code smell
     const userId = params.id as any;
