@@ -15,15 +15,21 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
 
-      - name: Run ESLint and generate report
-        run: |
-          bunx eslint . -f json -o eslint-report.json || true
-
       - name: Install deps
         run: bun install
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v2
+
+      - name: Run ESLint and generate report
+        run: |
+          bunx eslint . -f json -o eslint-report.json || true
+
+      - name: ESLint (fail on error)
+        run: bunx eslint .
+
+      - name: Run tests
+        run: bun test --coverage
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

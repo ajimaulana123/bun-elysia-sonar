@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 
-const app = new Elysia();
+export const app = new Elysia();
 
 app.get("/", () => {
     return "Hello Elysia";
