@@ -18,6 +18,9 @@ jobs:
       - name: Install deps
         run: bun install
 
+      - name: Run tests with coverage
+        run: bunx c8 --reporter=lcov bun test
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v2
 
@@ -27,9 +30,6 @@ jobs:
 
       - name: ESLint (fail on error)
         run: bunx eslint .
-
-      - name: Run tests
-        run: bun test --coverage
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
