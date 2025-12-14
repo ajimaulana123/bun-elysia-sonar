@@ -16,6 +16,4 @@ This project was created using `bun init` in bun v1.3.4. [Bun](https://bun.com) 
 
 # Tutor and trail error
 
-```bash
-https://chatgpt.com/share/693ea28d-d760-8005-bf4c-5ef035321d10
-```
+<a href="https://chatgpt.com/share/693ea28d-d760-8005-bf4c-5ef035321d10">https://chatgpt.com/share/693ea28d-d760-8005-bf4c-5ef035321d10</a>
