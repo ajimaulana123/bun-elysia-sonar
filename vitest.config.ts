@@ -8,9 +8,20 @@ export default defineConfig({
             reporter: ["lcov", "text"],
             reportsDirectory: "coverage",
 
-            // ⬇️ ROOT-BASED
-            include: ["**/*.ts"],
-            exclude: ["**/*.test.ts", "node_modules/**",],
+            include: [
+                "src/routes/**/*.ts",
+                "src/services/**/*.ts",
+                "src/errors/**/*.ts",
+            ],
+
+            exclude: [
+                "src/server.ts",
+                "src/app.ts",
+                "src/types/**",
+                "**/*.test.ts",
+                "node_modules/**",
+            ],
         },
+
     },
 });
